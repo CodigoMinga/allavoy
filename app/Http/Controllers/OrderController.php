@@ -91,4 +91,10 @@ class OrderController extends Controller
 
         return view('orders.add');
     }
+    public function addProcess(Request $request)
+    {
+        Order::create($request->all());
+
+        return redirect()->route('orders.index');
+    }
 }
