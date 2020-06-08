@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Portfolio  |' . $project->title)
+@section('title', 'Mostrar ordenes  |' . $project->title)
 
 @section('content')
     <h1>{{ $project->title }}</h1>

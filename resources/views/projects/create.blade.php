@@ -1,9 +1,9 @@
 @extends('layout')
 
-@section('title', 'Crear proyecto')
+@section('title', 'Crear orden')
 
 @section('content')
-    <h1>Crear proyecto</h1>
+    <h1>Crear ordeno</h1>
     
     @include('partials.validation-errors')
 

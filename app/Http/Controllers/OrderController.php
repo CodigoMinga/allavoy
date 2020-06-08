@@ -35,7 +35,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Order::create($request);
+
+        return redirect()->route('orders.index')->with('status', 'La orden fue creada con exito.');
     }
 
     /**
@@ -81,5 +83,12 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+
+    public function add()
+    {
+
+        return view('orders.add');
     }
 }
