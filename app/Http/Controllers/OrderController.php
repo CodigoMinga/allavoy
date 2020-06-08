@@ -105,4 +105,11 @@ class OrderController extends Controller
 
         ]);
     }
+
+    public function details($order_id)
+    {
+        return view('orders.details', [
+            'order' => Order::find($order_id)
+        ]);
+    }
 }
