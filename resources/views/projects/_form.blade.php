@@ -12,7 +12,7 @@
 <br>
 <label>
     Valor declarado <br>
-    <input type="text" name="address" value="{{ old('address', $project->address) }}">
+    <input type="text" name="cost" value="{{ old('cost', $project->cost) }}">
 </label>
 <br>
 <button>{{ $btnText }}</button>
