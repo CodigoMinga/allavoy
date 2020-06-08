@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -95,6 +95,14 @@ class OrderController extends Controller
     {
         Order::create($request->all());
 
-        return redirect()->route('orders.index');
+        return redirect()->route('orders.list');
+    }
+
+    public function list()
+    {
+        return view('orders.list', [
+            'orders' => Order::latest()->paginate()
+
+        ]);
     }
 }
