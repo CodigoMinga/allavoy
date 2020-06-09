@@ -1,3 +1,6 @@
+@extends('partials.maincontainer')
+@section('content')
+
 <h1>lista</h1>
 
 <ul>
@@ -14,3 +17,5 @@
 </ul>
 
 <a href="{{ route('orders.add')}}">Agregar ornden</a>
+
+@endsection

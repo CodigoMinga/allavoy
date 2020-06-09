@@ -1,3 +1,6 @@
+@extends('partials.maincontainer')
+@section('content')
+
 <h1>Detalles de orden</h1>
 <ul>
     <li>Folio: {{ $order->id }}</li>
@@ -11,3 +14,5 @@
 
 <a href="{{ route('orders.list')}}">Lista</a> <br>
 <a href="{{ route('orders.add')}}">Agregar ornden</a>
+
+@endsection
