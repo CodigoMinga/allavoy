@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,9 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Order::create($request);
+
+        return redirect()->route('orders.index')->with('status', 'La orden fue creada con exito.');
     }
 
     /**
@@ -81,5 +83,33 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+
+    public function add()
+    {
+
+        return view('orders.add');
+    }
+    public function addProcess(Request $request)
+    {
+        Order::create($request->all());
+
+        return redirect()->route('orders.list');
+    }
+
+    public function list()
+    {
+        return view('orders.list', [
+            'orders' => Order::latest()->paginate()
+
+        ]);
+    }
+
+    public function details($order_id)
+    {
+        return view('orders.details', [
+            'order' => Order::find($order_id)
+        ]);
     }
 }

@@ -17,9 +17,10 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('client');
             $table->string('address');
-            $table->decimal('cost');
+            $table->integer('cost');
             $table->date('deliver_date');
-            $table->boolean('enable');
+            $table->time('deliver_hour');
+            $table->boolean('enable')->default(1);
             $table->timestamps();
         });
     }
