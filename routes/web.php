@@ -9,5 +9,5 @@ Route::get('/app/order/list','OrderController@list')->name('orders.list');
 Route::get('/app/order/{order_id}','OrderController@details')->name('orders.details');
 
 Route::get('/logout','HomeController@logout')->name('logout');
-Auth::routes();
+Auth::routes(['register' => false]);
 
