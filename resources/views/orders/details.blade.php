@@ -12,7 +12,4 @@
     <li>Habilitado: {{ $order->enable }}</li>
 </ul>
 
-<a href="{{ route('orders.list')}}">Lista</a> <br>
-<a href="{{ route('orders.add')}}">Agregar ornden</a>
-
 @endsection

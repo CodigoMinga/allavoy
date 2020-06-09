@@ -16,6 +16,5 @@
 
 </ul>
 
-<a href="{{ route('orders.add')}}">Agregar ornden</a>
 
 @endsection
