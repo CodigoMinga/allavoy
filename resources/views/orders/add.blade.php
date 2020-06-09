@@ -30,3 +30,5 @@
 <br>
 <button>Guardar</button>
 </form>
+
+<a href="{{ route('orders.list')}}">Lista</a>
