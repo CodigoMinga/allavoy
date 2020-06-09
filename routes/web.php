@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/app', 'index')->name('orders.index');
+Route::view('/', 'index')->name('index');
 Route::get('/app/order/add','OrderController@add')->name('orders.add');
 Route::post('/app/order/add/process','OrderController@addProcess')->name('orders.addProcess');
 Route::get('/app/order/list','OrderController@list')->name('orders.list');

@@ -1,3 +1,9 @@
+@extends('partials.maincontainer')
+
+
+@section('content')
+
+
 <H1>Crear orden</H1>
 
 <form method="POST" action="{{ route('orders.addProcess')}}">
@@ -5,7 +11,7 @@
 
 <label>
     Entregar a: <br>
-    <input type="text" name="client" value="{{ old('client', '') }}">
+    <input type="text" class="form-control" name="client" value="{{ old('client', '') }}">
 </label>
 <br>
 <label>
@@ -28,7 +34,9 @@
     <input type="decimal" name="cost" value="{{ old('cost', '') }}">
 </label>
 <br>
-<button>Guardar</button>
+<button class="btn btn-primary">Guardar</button>
 </form>
 
 <a href="{{ route('orders.list')}}">Lista</a>
+
+@endsection
