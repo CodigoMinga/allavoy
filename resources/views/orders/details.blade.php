@@ -8,7 +8,7 @@
     <li>Direccion: {{ $order->address }}</li>
     <li>Fecha de entrega: {{ $order->deliver_date }}</li>
     <li>Hora de entrega: {{ $order->deliver_hour }}</li>
-    <li>Valor declarado: {{ $order->cost }}</li>
+    <li>Valor declarado: ${{ $order->cost }}</li>
     <li>Habilitado: {{ $order->enable }}</li>
 </ul>
 
