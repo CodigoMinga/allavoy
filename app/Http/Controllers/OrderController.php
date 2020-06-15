@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\User;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a liUserssting of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -68,10 +70,7 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+    /**Usersnate\Http\Request  $request
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
@@ -94,8 +93,8 @@ class OrderController extends Controller
 
     public function add()
     {
-
-        return view('orders.add');
+        $users = User::all();
+        return view('orders.add', compact('users'));
     }
     public function addProcess(Request $request)
     {
@@ -114,8 +113,30 @@ class OrderController extends Controller
 
     public function details($order_id)
     {
+        $users = User::all();
         return view('orders.details', [
             'order' => Order::find($order_id)
         ]);
+    }
+
+    public function jobs()
+    {
+        $users = User::all();
+        return view('orders.jobs', [
+            'orders' => Order::all()
+        ]);
+    }
+
+    public function change(Order $order)
+    {
+        return view('orders.change',[
+            'order' => $order
+        ]);
+    }
+    public function update(Request $request)
+    {
+        Order::update($request->all());
+
+        return redirect()->route('orders.list');
     }
 }

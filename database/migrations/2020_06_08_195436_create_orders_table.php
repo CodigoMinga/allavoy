@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->date('deliver_date');
             $table->time('deliver_hour');
             $table->boolean('enable')->default(1);
+            $table->bigInteger('deliveryuser_id')->nullable()->unsigned();
+            $table->foreign('deliveryuser_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

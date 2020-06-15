@@ -32,9 +32,22 @@
     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
 </label>
 <br>
-<button class="btn btn-primary">Guardar</button>
+<form action="/action_page.php">
+  <label for="deliveryuser_id">Elija un repartidor:</label>
+  <select name="deliveryuser_id" id="deliveruser_id">
+  @forelse($users as $user)
+  <option value="{{ $user->id }}">{{ $user->name }}</option>
+    @empty
+        <li>No hay repartidor para mostrar</li>
+    @endforelse 
+    
+
+  </select>
+  <br><br>
+  <input class="btn btn-primary" type="submit" value="Guardar"> <br>
 </form>
 
-<a href="{{ route('orders.list')}}">Lista</a>
+</form>
+
 
 @endsection

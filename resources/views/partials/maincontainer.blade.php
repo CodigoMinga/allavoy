@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Allavoy</title>
 
     
   </head>
@@ -34,18 +34,17 @@
       </li>
       @auth
       <li class="nav-item">
-        <a class="nav-link" href="#">{{auth()->user()->name}}</a>
+        <a class="nav-link" href="{{ route('orders.jobs')}}">Ordenes pendientes</a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{auth()->user()->name}}</a>
+      </li>   
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout')}}" >Logout</a>
       </li>
       @endauth
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
   </div>
 </nav>
 

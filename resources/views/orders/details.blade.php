@@ -10,6 +10,9 @@
     <li>Hora de entrega: {{ $order->deliver_hour }}</li>
     <li>Valor declarado: ${{ $order->cost }}</li>
     <li>Habilitado: {{ $order->enable }}</li>
+    <li>Repartidor Asignado : {{ $order->deliveryuser->name }} </li>
 </ul>
+
+<a href="{{ route('orders.change', $order)}}">Editar</a>
 
 @endsection
