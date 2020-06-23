@@ -37,6 +37,9 @@
         <a class="nav-link" href="{{ route('orders.jobs')}}">Ordenes pendientes</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('friendshops.add')}}">Nuevo local</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">{{auth()->user()->name}}</a>
       </li>   
       <li class="nav-item">
