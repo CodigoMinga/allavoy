@@ -1,7 +1,7 @@
 @extends('partials.maincontainer')
 @section('content')
 
-<h1>lista</h1>
+<h1>lista de ordenes</h1>
 
 <ul>
 

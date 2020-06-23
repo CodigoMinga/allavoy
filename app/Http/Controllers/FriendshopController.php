@@ -93,4 +93,17 @@ class FriendshopController extends Controller
 
         return redirect()->route('index')->with('Local creado exitosamente');
     }
+    public function list()
+    {
+        return view('friendshops.list', [
+            'friendshops' => Friendshop::latest()->paginate()
+
+        ]);
+    }
+    public function details($friendshop_id)
+    {
+        return view('friendshops.details', [
+            'friendshop' => Friendshop::find($friendshop_id)
+        ]);
+    }
 }

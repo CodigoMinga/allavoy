@@ -13,6 +13,8 @@ Route::get('/app/order/{order_id}','OrderController@details')->name('orders.deta
 
 Route::get('/app/friendshop/add', 'FriendshopController@add')->name('friendshops.add');
 Route::post('/app/friendshop/add/process', 'FriendshopController@addProcess')->name('friendshops.addProcess');
+Route::get('/app/friendshop/list','FriendshopController@list')->name('friendshops.list');
+Route::get('/app/friendshop/{friendshop_id}','FriendshopController@details')->name('friendshops.details');
 
 
 Route::get('/logout','HomeController@logout')->name('logout');
