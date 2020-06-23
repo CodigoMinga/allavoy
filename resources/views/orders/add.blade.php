@@ -33,6 +33,16 @@
 </label>
 <br>
 <form action="/action_page.php">
+  <label for="order_type">Tipo de orden:</label>
+  <select name="order_type" id="order">
+  
+  <option value="0" >Compra</option>
+  <option value="1">Encargo</option>
+  </select>
+  <br>
+</form>
+<br>
+<form action="/action_page.php">
   <label for="deliveryuser_id">Elija un repartidor:</label>
   <select name="deliveryuser_id" id="deliveruser_id">
   @forelse($users as $user)

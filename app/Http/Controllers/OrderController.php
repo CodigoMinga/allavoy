@@ -129,11 +129,13 @@ class OrderController extends Controller
 
     public function change(Order $order)
     {
+        $users = User::all();
         return view('orders.change',[
-            'order' => $order
+            'order' => $order,
+            'users' => $users
         ]);
     }
-    public function update(Request $request)
+    public function upgrade(Request $request)
     {
         Order::update($request->all());
 

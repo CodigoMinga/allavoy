@@ -4,7 +4,7 @@
 
 <H1>Editar orden</H1>
 
-<form method="POST" action="{{ route('orders.update')}}">
+<form method="POST" action="{{ route('orders.upgrade', $order)}}">
     @csrf @method('PATCH')
 
 <label>
@@ -31,6 +31,26 @@
     Valor declarado <br>
     <input type="integer" class="form-control" name="cost" value="{{ $order->cost }}">
 </label>
+<br>
+<form action="/action_page.php">
+  <label for="order_type">Tipo de orden:</label>
+  <select name="order_type" id="order">
+
+  <option  {{$order->order_type == 0 ? 'selected' : ''}}>Compra</option>
+  <option  {{$order->order_type == 1 ? 'selected' : ''}}>Encargo</option>
+  </select>
+  <br>
+</form>
+<br>
+<form action="/action_page.php">
+  <label for="enable">Elejir estado de orden:</label>
+  <select name="enable" id="order">
+ 
+  <option  {{$order->enable == 0 ? 'selected' : ''}}>Pendiente</option>
+  <option  {{$order->enable == 1 ? 'selected' : ''}}>Entregada</option>
+  </select>
+  <br>
+</form>
 <br>
 <form action="/action_page.php">
   <label for="deliveryuser_id">Elija un repartidor:</label>
