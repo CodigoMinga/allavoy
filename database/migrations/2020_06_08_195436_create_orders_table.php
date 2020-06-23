@@ -25,6 +25,9 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('deliveryuser_id')->nullable()->unsigned();
             $table->foreign('deliveryuser_id')->references('id')->on('users');
             $table->timestamps();
+
+            $table->bigInteger('friendshop_id')->nullable()->unsigned();
+            $table->foreign('friendshop_id')->references('id')->on('friendshops');
         });
     }
 
