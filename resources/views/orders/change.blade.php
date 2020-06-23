@@ -19,12 +19,12 @@
 <br>
 <label>
     Fecha <br>
-    <input type="date" class="form-control" name="deliver_date" value="{{ $order->delver_date }}">
+    <input type="date" class="form-control" name="deliver_date" value="{{ date('Y-m-d', strtotime($order->deliver_date)) }}">
 </label>
 <br>
 <label>
     Hora <br>
-    <input type="time" class="form-control" name="deliver_hour" value="{{ $order->delver_hour }}">
+    <input type="time" class="form-control" name="deliver_hour" value="{{ $order->deliver_hour }}">
 </label>
 <br>
 <label>
@@ -32,7 +32,19 @@
     <input type="integer" class="form-control" name="cost" value="{{ $order->cost }}">
 </label>
 <br>
-<form action="/action_page.php">
+<label for="friendshop_id">Tipo de orden:</label>
+  <select name="friendshop_id" id="friendshop_id">
+  
+  @forelse($friendshops as $friendshop)
+  <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
+    @empty
+        <li>Aun no hay locales amigos</li>
+    @endforelse 
+    
+
+  </select>
+  <br>
+
   <label for="order_type">Tipo de orden:</label>
   <select name="order_type" id="order">
 
@@ -40,19 +52,15 @@
   <option  {{$order->order_type == 1 ? 'selected' : ''}}>Encargo</option>
   </select>
   <br>
-</form>
-<br>
-<form action="/action_page.php">
+
   <label for="enable">Elejir estado de orden:</label>
   <select name="enable" id="order">
  
-  <option  {{$order->enable == 0 ? 'selected' : ''}}>Pendiente</option>
-  <option  {{$order->enable == 1 ? 'selected' : ''}}>Entregada</option>
+  <option  {{$order->enable == 1 ? 'selected' : ''}}>Pendiente</option>
+  <option  {{$order->enable == 0 ? 'selected' : ''}}>Entregada</option>
   </select>
   <br>
-</form>
-<br>
-<form action="/action_page.php">
+
   <label for="deliveryuser_id">Elija un repartidor:</label>
   <select name="deliveryuser_id" id="deliveruser_id">
   @forelse($users as $user)
@@ -65,7 +73,7 @@
   </select>
   <br><br>
   <input class="btn btn-primary" type="submit" value="Editar"> <br>
-</form>
+
 
 </form>
 

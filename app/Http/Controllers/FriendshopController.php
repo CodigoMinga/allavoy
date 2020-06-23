@@ -91,7 +91,7 @@ class FriendshopController extends Controller
     {
         Friendshop::create($request->all());
 
-        return redirect()->route('index')->with('Local creado exitosamente');
+        return redirect()->route('friendshops.list');
     }
     public function list()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\User;
+use App\Friendshop;
 
 use Illuminate\Http\Request;
 
@@ -93,8 +94,9 @@ class OrderController extends Controller
 
     public function add()
     {
+        $friendshops = Friendshop::all();
         $users = User::all();
-        return view('orders.add', compact('users'));
+        return view('orders.add', compact('users', 'friendshops'));
     }
     public function addProcess(Request $request)
     {
@@ -129,16 +131,31 @@ class OrderController extends Controller
 
     public function change(Order $order)
     {
+        $friendshops = Friendshop::all();
         $users = User::all();
         return view('orders.change',[
             'order' => $order,
-            'users' => $users
+            'users' => $users,
+            'friendshops' => $friendshops
         ]);
     }
-    public function upgrade(Request $request)
+
+    public function upgrade($order_id,Request $request)
     {
-        Order::update($request->all());
+        //busca la orden en la base de datos con el id que se le pasa desde la URL
+        $order = Order::findOrFail($order_id);
+
+        $order->update($request->all());
 
         return redirect()->route('orders.list');
+    }
+    public function jobdone($order_id)
+    {
+        $order = Order::findOrFail($order_id);
+
+        $order->enable = 0;
+        $order->save();
+
+        return redirect()->route('orders.jobs');
     }
 }

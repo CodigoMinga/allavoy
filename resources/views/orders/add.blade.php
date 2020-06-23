@@ -32,7 +32,19 @@
     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
 </label>
 <br>
-<form action="/action_page.php">
+<label for="friendshop_id">Tipo de orden:</label>
+  <select name="friendshop_id" id="friendshop_id">
+  
+  @forelse($friendshops as $friendshop)
+  <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
+    @empty
+        <li>Aun no hay locales amigos</li>
+    @endforelse 
+    
+
+  </select>
+  <br>
+
   <label for="order_type">Tipo de orden:</label>
   <select name="order_type" id="order">
   
@@ -40,9 +52,7 @@
   <option value="1">Encargo</option>
   </select>
   <br>
-</form>
-<br>
-<form action="/action_page.php">
+
   <label for="deliveryuser_id">Elija un repartidor:</label>
   <select name="deliveryuser_id" id="deliveruser_id">
   @forelse($users as $user)
@@ -55,7 +65,7 @@
   </select>
   <br><br>
   <input class="btn btn-primary" type="submit" value="Guardar"> <br>
-</form>
+
 
 </form>
 

@@ -10,6 +10,7 @@ Route::patch('/app/order/{order}', 'OrderController@upgrade')->name('orders.upgr
 Route::get('/app/order/list','OrderController@list')->name('orders.list');
 Route::get('/app/jobs', 'OrderController@jobs')->name('orders.jobs');
 Route::get('/app/order/{order_id}','OrderController@details')->name('orders.details');
+Route::get('/app/jobdone/{order_id}', 'OrderController@jobdone')->name('orders.jobdone');
 
 Route::get('/app/friendshop/add', 'FriendshopController@add')->name('friendshops.add');
 Route::post('/app/friendshop/add/process', 'FriendshopController@addProcess')->name('friendshops.addProcess');
