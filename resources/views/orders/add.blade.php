@@ -34,7 +34,7 @@
 <br>
 <label for="friendshop_id">Tipo de orden:</label>
   <select name="friendshop_id" id="friendshop_id">
-  
+  <option value="">Nulo</option>
   @forelse($friendshops as $friendshop)
   <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
     @empty

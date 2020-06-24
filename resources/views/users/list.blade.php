@@ -6,12 +6,12 @@
 <ul>
 
     @forelse($users as $user)
-        <li><a href="#">{{ $user->name }}</a></li>
-        
-        <br>
+    <li><a href="#">{{ $user->name }}</a></li>
+
+    <br>
     @empty
-        <li>No hay usuarios para mostrar</li>
-    @endforelse 
+    <li>No hay usuarios para mostrar</li>
+    @endforelse
     {{ $users->links() }}
 
 </ul>
