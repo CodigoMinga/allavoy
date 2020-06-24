@@ -17,6 +17,9 @@ Route::post('/app/friendshop/add/process', 'FriendshopController@addProcess')->n
 Route::get('/app/friendshop/list','FriendshopController@list')->name('friendshops.list');
 Route::get('/app/friendshop/{friendshop_id}','FriendshopController@details')->name('friendshops.details');
 
+Route::get('/app/register', 'UserController@create')->name('users.register');
+Route::post('/app/register/process','UserController@store')->name('users.store');
+Route::get('/app/user/list','UserController@list')->name('users.list');
 
 Route::get('/logout','HomeController@logout')->name('logout');
 Auth::routes(['register' => false]);
