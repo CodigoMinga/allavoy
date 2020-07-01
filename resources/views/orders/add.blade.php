@@ -34,7 +34,7 @@
                     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
                 </label>
                 <br>
-                <label for="friendshop_id">Tipo de orden:</label>
+                <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
                     <option value="">Externo</option>
                     @forelse($friendshops as $friendshop)
@@ -55,7 +55,7 @@
                 </select>
                 <br>
 
-                <label for="deliveryuser_id">Elija un repartidor:</label>
+                <label for="deliveryuser_id">Repartidor:</label>
                 <select name="deliveryuser_id" id="deliveruser_id">
                     @forelse($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
