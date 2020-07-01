@@ -45,14 +45,14 @@
         <a class="nav-link" href="#">{{auth()->user()->name}}</a>
       </li>   
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('logout')}}" >Logout</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{{ route('users.register') }}">Registrar</a>
       </li> 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('users.list') }}">Usuarios</a>
       </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout')}}" >Logout</a>
+      </li>
       @endauth
     </ul>
   </div>
