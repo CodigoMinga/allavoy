@@ -14,7 +14,7 @@
                     Secion iniciada!
                 </div>
             @guest
-            <a href="{{ route('login') }}">Login</a>
+            <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
             @endguest
         </div>
     </div>

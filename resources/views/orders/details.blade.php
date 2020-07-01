@@ -15,7 +15,7 @@
                 <li>Repartidor Asignado : {{ $order->deliveryuser->name }} </li>
             </ul>
 
-            <a href="{{ route('orders.change', $order)}}">Editar</a>
+            <a class="btn btn-primary" href="{{ route('orders.change', $order)}}">Editar</a>
         </div>
     </div>
 </div>

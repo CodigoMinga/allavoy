@@ -11,7 +11,7 @@
                 @if($order->deliveryuser->id == auth()->user()->id)
                 <li><a href="{{ route('orders.details', $order) }}">{{ $order->client }}</a></li>
                 {{ $order->deliver_date}}<br>
-                <a href="{{ route('orders.jobdone', $order->id) }}">Entregado</a>
+                <a class="btn btn-primary" href="{{ route('orders.jobdone', $order->id) }}">Entregado</a>
                 <br>
                 @endif
                 @endif
