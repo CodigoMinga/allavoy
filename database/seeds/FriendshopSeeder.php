@@ -18,16 +18,5 @@ class FriendshopSeeder extends Seeder
         $friendshop->email = "00@gmail.com";
         $friendshop->save();
 
-        $friendshop = new Friendshop;
-        $friendshop->name = "Local 1";
-        $friendshop->address = "asdasd";
-        $friendshop->email = "asdasd@gmail.com";
-        $friendshop->save();
-
-        $friendshop = new Friendshop;
-        $friendshop->name = "Local 2";
-        $friendshop->address = "asdasd";
-        $friendshop->email = "asdasd@gmail.com";
-        $friendshop->save();
     }
 }
