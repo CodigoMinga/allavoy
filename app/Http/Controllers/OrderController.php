@@ -115,6 +115,7 @@ class OrderController extends Controller
 
     public function details($order_id)
     {
+        $friendshops = Friendshop::all();
         $users = User::all();
         return view('orders.details', [
             'order' => Order::find($order_id)

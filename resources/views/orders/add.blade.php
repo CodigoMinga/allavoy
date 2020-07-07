@@ -36,7 +36,6 @@
                 <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
-                    <option value="">Externo</option>
                     @forelse($friendshops as $friendshop)
                     <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
                     @empty

@@ -13,7 +13,8 @@ class Order extends Model
     public function deliveryuser(){
             return $this->belongsTo('App\User','deliveryuser_id','id');
     }   
+
     public function friendshoplocal(){
-        return $this->belongsTo('App\User','friendshop_id','id');
+        return $this->belongsTo('App\Friendshop','friendshop_id','id');
 } 
 }

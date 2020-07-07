@@ -13,9 +13,9 @@ class FriendshopSeeder extends Seeder
     public function run()
     {
         $friendshop = new Friendshop;
-        $friendshop->name = "";
-        $friendshop->address = "";
-        $friendshop->email = "";
+        $friendshop->name = "Sin local amigo";
+        $friendshop->address = "00";
+        $friendshop->email = "00@gmail.com";
         $friendshop->save();
 
         $friendshop = new Friendshop;

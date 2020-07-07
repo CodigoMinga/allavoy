@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('cost');
             $table->date('deliver_date');
             $table->time('deliver_hour');
-            $table->boolean('enable')->default(1);
+            $table->integer('enable')->default(1);
             $table->integer('order_type');
             $table->bigInteger('deliveryuser_id')->nullable()->unsigned();
             $table->foreign('deliveryuser_id')->references('id')->on('users');

@@ -35,30 +35,27 @@
                 <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
-                <option value="">Externo</option>
                     @forelse($friendshops as $friendshop)
                     <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
                     @empty
                     <li>Aun no hay locales amigos</li>
                     @endforelse
-
-
                 </select>
                 <br>
-
                 <label for="order_type">Tipo de orden:</label>
                 <select name="order_type" id="order">
 
-                    <option {{$order->order_type == 0 ? 'selected' : ''}}>Compra</option>
-                    <option {{$order->order_type == 1 ? 'selected' : ''}}>Encargo</option>
+                    <option value="0" {{$order->order_type == 0 ? 'selected' : '' }}>Compra</option>
+                    <option value="1" {{$order->order_type == 1 ? 'selected' : '' }}>Encargo</option>
                 </select>
                 <br>
 
                 <label for="enable">Estado de orden:</label>
                 <select name="enable" id="order">
 
-                    <option {{$order->enable == 1 ? 'selected' : ''}}>Pendiente</option>
-                    <option {{$order->enable == 0 ? 'selected' : ''}}>Entregada</option>
+                    <option value="1" {{$order->enable == 1 ? 'selected' : ''}}>Pendiente</option>
+                    <option value="0" {{$order->enable == 0 ? 'selected' : ''}}>Entregada</option>
+                    <option value="2" {{$order->enable == 2 ? 'selected' : ''}}>Canselado</option>
                 </select>
                 <br>
 
@@ -69,13 +66,9 @@
                     @empty
                     <li>No hay repartidor para mostrar</li>
                     @endforelse
-
-
                 </select>
                 <br><br>
                 <input class="btn btn-primary" type="submit" value="Editar"> <br>
-
-
             </form>
         </div>
     </div>
