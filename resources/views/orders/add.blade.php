@@ -42,11 +42,8 @@
                     @empty
                     <li>Aun no hay locales amigos</li>
                     @endforelse
-
-
                 </select>
                 <br>
-
                 <label for="order_type">Tipo de orden:</label>
                 <select name="order_type" id="order">
 
@@ -66,10 +63,7 @@
                 </select>
                 <br><br>
                 <input class="btn btn-primary" type="submit" value="Guardar"> <br>
-
-
             </form>
-
         </div>
     </div>
 </div>

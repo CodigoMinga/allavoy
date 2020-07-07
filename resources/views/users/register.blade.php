@@ -5,13 +5,11 @@
     <div class="row">
         <div class="col-12 text-center ">
             <h1>Registrese</h1>
-
-
-            <form method="POST" action="{{ route('orders.addProcess')}}">
+            <form method="POST" action="{{ route('users.store')}}">
                 @csrf
                 <label>
                     Nombre de usuario: <br>
-                    <input type="text" class="form-control" name="user" value="{{ old('user', '') }}">
+                    <input type="text" class="form-control" name="name" value="{{ old('user', '') }}">
                 </label><br>
                 <label>
                     Email: <br>
@@ -21,9 +19,14 @@
                     Clave: <br>
                     <input type="text" class="form-control" name="password" value="{{ old('password', '') }}">
                 </label><br>
+                <label for="rol">Rol:</label>
+                <select name="rol" id="rol">
 
+                    <option value="administrador">Administrador</option>
+                    <option value="repartidor">Repartidor</option>
+                </select>
+                <br>
                 <input class="btn btn-primary" type="submit" value="Guardar"> <br>
-
             </form>
         </div>
     </div>

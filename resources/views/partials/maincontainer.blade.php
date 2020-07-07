@@ -25,19 +25,25 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{ route('index') }}">Inicio <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      @auth
+      @if(Auth::user()->hasRole(['administrador']))
+      <li class="nav-item">       
         <a class="nav-link" href="{{ route('orders.add') }}">Nueva orden</a>
       </li>
-      <li class="nav-item">
+      @endif
+      @if(Auth::user()->hasRole(['administrador']))
+      <li class="nav-item">      
         <a class="nav-link" href="{{ route('orders.list') }}">Lista</a>
       </li>
-      @auth
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{ route('orders.jobs')}}">Ordenes pendientes</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('friendshops.add')}}">Nuevo local</a>
+      @if(Auth::user()->hasRole(['administrador']))
+      <li class="nav-item">     
+        <a class="nav-link" href="{{ route('friendshops.add')}}">Nuevo local</a>       
       </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{ route('friendshops.list') }}">Lista locales</a>
       </li> 
@@ -66,3 +72,5 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </html>
+
+
