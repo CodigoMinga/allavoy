@@ -85,7 +85,7 @@ class FriendshopController extends Controller
 
     public function add()
     {
-        return view('friendshops.add',);
+        return view('friendshops.add');
     }
     public function addProcess(Request $request)
     {
