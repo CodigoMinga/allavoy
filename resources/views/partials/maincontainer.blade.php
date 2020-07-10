@@ -47,9 +47,11 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('friendshops.list') }}">Lista locales</a>
       </li> 
+      @if(Auth::user()->hasRole(['administrador']))
       <li class="nav-item">
         <a class="nav-link" href="{{ route('users.register') }}">Registrar</a>
       </li> 
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{ route('users.list') }}">Usuarios</a>
       </li> 
