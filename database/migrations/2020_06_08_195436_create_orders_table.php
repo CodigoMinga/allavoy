@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('client');
             $table->string('address');
-            $table->integer('cost');
+            $table->integer('cost')->nullable();
+            $table->string('pay_type')->nullable();
             $table->date('deliver_date');
             $table->time('deliver_hour');
             $table->integer('enable')->default(1);

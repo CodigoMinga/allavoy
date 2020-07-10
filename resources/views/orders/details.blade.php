@@ -12,6 +12,7 @@
                 <li class="list-group-item">Fecha de entrega: {{ $order->deliver_date }}</li>
                 <li class="list-group-item">Hora de entrega: {{ $order->deliver_hour }}</li>
                 <li class="list-group-item">Valor declarado: ${{ $order->cost }}</li>
+                <li class="list-group-item">tipo de pago: ${{ $order->pay_type }}</li>
                 <li class="list-group-item">Estado de orden: {{ $order->enable }}</li>
                 <li class="list-group-item">Repartidor Asignado : {{ $order->deliveryuser->name }} </li>               
             </ul>

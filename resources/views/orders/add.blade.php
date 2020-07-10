@@ -34,6 +34,11 @@
                     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
                 </label>
                 <br>
+                <label>
+                    Valor declarado <br>
+                    <input type="string" class="form-control" name="pay_type" value="{{ old('pay_type', '') }}">
+                </label>
+                <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
                     @forelse($friendshops as $friendshop)
