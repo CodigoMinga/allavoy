@@ -34,7 +34,7 @@
                 </label>
                 <br>
                 <label>
-                    Valor declarado <br>
+                    Tipo de pago <br>
                     <input type="string" class="form-control" name="pay_type" value="{{ old('pay_type', '') }}">
                 </label>
                 <br>
