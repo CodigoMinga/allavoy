@@ -34,19 +34,20 @@
                     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
                 </label>
                 <br>
+                <label>
+                    Tipo de pago <br>
+                    <input type="string" class="form-control" name="pay_type" value="{{ old('pay_type', '') }}">
+                </label>
+                <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
-                    <option value="">Externo</option>
                     @forelse($friendshops as $friendshop)
                     <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
                     @empty
                     <li>Aun no hay locales amigos</li>
                     @endforelse
-
-
                 </select>
                 <br>
-
                 <label for="order_type">Tipo de orden:</label>
                 <select name="order_type" id="order">
 
@@ -66,10 +67,7 @@
                 </select>
                 <br><br>
                 <input class="btn btn-primary" type="submit" value="Guardar"> <br>
-
-
             </form>
-
         </div>
     </div>
 </div>
