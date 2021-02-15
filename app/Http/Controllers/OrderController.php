@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Ordertype;
+use App\Paytypes;
 use App\User;
 use App\Friendshop;
 
@@ -20,10 +22,10 @@ class OrderController extends Controller
      {
          $this->middleware('auth')->only('add','list', 'details');
      }
-     
+
     public function index()
     {
-        
+
     }
 
     /**
@@ -96,7 +98,10 @@ class OrderController extends Controller
     {
         $friendshops = Friendshop::all();
         $users = User::all();
-        return view('orders.add', compact('users', 'friendshops'));
+        $paytypes = Paytypes::all();
+        $ordertypes = Ordertype::all();
+
+        return view('orders.add', compact('users', 'friendshops','ordertypes','paytypes'));
     }
     public function addProcess(Request $request)
     {

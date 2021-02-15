@@ -34,10 +34,14 @@
                     <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
                 </label>
                 <br>
-                <label>
-                    Tipo de pago <br>
-                    <input type="string" class="form-control" name="pay_type" value="{{ old('pay_type', '') }}">
-                </label>
+                <label for="paytype_id">Local:</label>
+                <select name="paytype_id" id="paytype_id">
+                    @forelse($paytypes as $paytype)
+                        <option value="{{ $paytype->id }}">{{ $paytype->name }}</option>
+                    @empty
+                        <li>Aun no hay tipos de pago</li>
+                    @endforelse
+                </select>
                 <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
@@ -49,11 +53,15 @@
                 </select>
                 <br>
                 <label for="order_type">Tipo de orden:</label>
-                <select name="order_type" id="order">
 
-                    <option value="0">Compra</option>
-                    <option value="1">Encargo</option>
+                <select name="ordertype_id" id="ordertype_id">
+                    @forelse($ordertypes as $ordertype)
+                        <option value="{{ $ordertype->id }}">{{ $ordertype->name }}</option>
+                    @empty
+                        <li>Aun no hay tipos de orden</li>
+                    @endforelse
                 </select>
+                <br>
                 <br>
 
                 <label for="deliveryuser_id">Repartidor:</label>
