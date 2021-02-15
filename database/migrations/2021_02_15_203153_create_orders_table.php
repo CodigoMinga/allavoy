@@ -18,11 +18,17 @@ class CreateOrdersTable extends Migration
             $table->string('client');
             $table->string('address');
             $table->integer('cost')->nullable();
-            $table->string('pay_type')->nullable();
+
+            $table->bigInteger('paytype_id')->nullable()->unsigned();
+            $table->foreign('paytype_id')->references('id')->on('paytypes');
+
             $table->date('deliver_date');
             $table->time('deliver_hour');
             $table->integer('enable')->default(1);
-            $table->integer('order_type');
+
+            $table->bigInteger('ordertype_id')->nullable()->unsigned();
+            $table->foreign('ordertype_id')->references('id')->on('ordertypes');
+
             $table->bigInteger('deliveryuser_id')->nullable()->unsigned();
             $table->foreign('deliveryuser_id')->references('id')->on('users');
             $table->timestamps();
