@@ -7,8 +7,10 @@ use App\Ordertype;
 use App\Paytypes;
 use App\User;
 use App\Friendshop;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
@@ -163,5 +165,19 @@ class OrderController extends Controller
         $order->save();
 
         return redirect()->route('orders.jobs');
+    }
+
+
+    public function getData(){
+        $orders = Db::select('
+        select orders.*,
+        ordertypes.name as ordertype_name,
+        paytypes.name as paytype_name
+        from orders
+        left join ordertypes on orders.ordertype_id = ordertypes.id
+        left join paytypes on orders.paytype_id = paytypes.id
+        ');
+        return DataTables::of($orders)->make(true);
+
     }
 }
