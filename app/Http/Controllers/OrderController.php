@@ -134,7 +134,9 @@ class OrderController extends Controller
     {
         $users = User::all();
 
-        $orders = Order::where('deliveryuser_id','=',Auth::user()->id)->get();
+        $orders = Order::where('deliveryuser_id','=',Auth::user()->id)
+            ->where('status_id','=',0)
+            ->get();
         return view('orders.jobs', [
             'orders' => $orders
         ]);
