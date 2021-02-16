@@ -141,10 +141,14 @@ class OrderController extends Controller
     {
         $friendshops = Friendshop::all();
         $users = User::all();
+        $paytypes = Paytypes::all();
+        $ordertypes = Ordertype::all();
         return view('orders.change',[
             'order' => $order,
             'users' => $users,
-            'friendshops' => $friendshops
+            'friendshops' => $friendshops,
+            'paytypes' => $paytypes,
+            'ordertypes' => $ordertypes
         ]);
     }
 
