@@ -8,6 +8,7 @@ use App\Paytypes;
 use App\User;
 use App\Friendshop;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -132,8 +133,10 @@ class OrderController extends Controller
     public function jobs()
     {
         $users = User::all();
+
+        $orders = Order::where('deliveryuser_id','=',Auth::user()->id)->get();
         return view('orders.jobs', [
-            'orders' => Order::all()
+            'orders' => $orders
         ]);
     }
 

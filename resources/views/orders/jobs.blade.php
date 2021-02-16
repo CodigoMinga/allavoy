@@ -1,24 +1,22 @@
 @extends('partials.maincontainer')
 @section('content')
+<br/>
 <div class="container ">
-    <div class="row">
-        <div class="col-12 text-center ">
-            <h1>Ordenes de: {{auth()->user()->name}}</h1>
-            <ul class="list-group">
-                @forelse($orders as $order)
-                @if($order->status_id == 0)
-                @if($order->deliveryuser->id == auth()->user()->id)
-                <li class="list-group-item"><a href="{{ route('orders.details', $order) }}">{{ $order->client }}</a></li>
-                {{ $order->deliver_date}}<br>
-                <center><a class="btn btn-primary w-25" href="{{ route('orders.jobdone', $order->id) }}">Entregado</a></center>
-                <br>
-                @endif
-                @endif
-                @empty
-                <li>No tienes ordenes pendientes</li>
-                @endforelse
-            </ul>
+
+    @foreach($orders as $order)
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Cliente: {{$order->client}}</h5>
+            <b>Folio:</b> {{$order->id}}<br/>
+            <b>Local Amigo:</b> {{$order->friendshoplocal->name}}<br/>
+            <b>Direccion:</b> {{$order->address}}<br/>
+            <b>Tipo Pago:</b> {{$order->paytype->name}}<br/>
+            <b>Tipo Entrega:</b> {{$order->ordertype->name}}<br/>
+            <a href="#" class="btn btn-primary">Entregar</a>
         </div>
     </div>
+    @endforeach
+
+
 </div>
 @endsection
