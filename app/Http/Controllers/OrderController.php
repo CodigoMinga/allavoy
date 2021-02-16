@@ -161,7 +161,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($order_id);
 
-        $order->enable = 0;
+        $order->status_id = 1;
         $order->save();
 
         return redirect()->route('orders.jobs');

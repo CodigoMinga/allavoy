@@ -1,31 +1,6 @@
 @extends('partials.maincontainer')
 @section('content')
-<div class="container ">
-    <div class="row">
-        <div class="col-12 text-center ">
-            <h1>lista de ordenes</h1>
-
-            <ul class="list-group">
-                @forelse($orders as $order)
-                <li class="list-group-item"><a href="{{ route('orders.details', $order) }}">{{ $order->client }}</a></li>
-                {{ $order->deliver_date}}
-                @if($order->enable == 2)
-                <li class="bg-danger text-white w-20">Cancelado</li>
-                @elseif($order->enable == 0)
-                <li class="bg-success text-white w-20">Entregado</li>
-                @elseif($order->enable == 1)
-                <li class="bg-warning text-white w-20">Pendiente</li>
-                @endif
-                <br>
-                @empty
-                <li>No hay ordenes para mostrar</li>
-                @endforelse
-                {{ $orders->links() }}
-            </ul>
-        </div>
-    </div>
-</div>
-
+<br/>
 <div class="container">
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
@@ -53,7 +28,30 @@
 
             "processing" : true,
             "serverSide" : true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                    extend: 'print',
+                    text: 'Imprimir',
+                    autoPrint: true,
+                    className:'btn btn-primary',
+                    exportOptions: {
+                        columns: [ 0, 1,2,3]
+                    },
+                    title: "Reporte de pedidos",
+                },
+                {
+                    extend: 'excel',
+                    text: 'Descargar a Excel',
+                    className:'btn btn-primary',
+                    exportOptions: {
+                        columns: [ 0, 1,2,3]
+                    },
+                    title: "Reporte de pedidos",
+                }
 
+            ],
             "ajax" : "{{ url('/') }}/ajax/orders/getdata",
             "columns" : [
                 {"data" : "id"},
@@ -61,14 +59,15 @@
                 {"data" : "client"},
                 //Estado
                 {
-                    "data" : "enable",
+                    "data" :  "client",
                     "render": function ( data, type, full, meta ) {
                         var returnString = '';
 
-                        if(full.enable){
-                            if(full.enable == 1){
+
+                        if(full.status_id != null){
+                            if(full.status_id === 0){
                                 returnString =  "<span class='badge badge-warning'> Pendiente</span>";
-                            }else if(full.enable==0){
+                            }else if(full.status_id===1){
                                 returnString =  "<span class='badge badge-success'> Entregado</span>";
                             }
                             else{
@@ -82,7 +81,17 @@
 
                     }
                 },
-                {"data" : "id"},
+
+                {
+                    "data" :  "client",
+                    "render": function ( data, type, full, meta ) {
+                        var returnString = "<a class='btn btn-primary' href='{{ url('/')}}/app/order/"+full.id+"'>Detalles</a>";
+
+                        return returnString;
+
+                    }
+                },
+
 
 
             ],

@@ -24,7 +24,8 @@ class CreateOrdersTable extends Migration
 
             $table->date('deliver_date');
             $table->time('deliver_hour');
-            $table->integer('enable')->default(1);
+            /*0 pendiente, 1 finalizado, 2 cancelado*/
+            $table->integer('status_id')->default(0);
 
             $table->bigInteger('ordertype_id')->nullable()->unsigned();
             $table->foreign('ordertype_id')->references('id')->on('ordertypes');

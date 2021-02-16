@@ -6,7 +6,7 @@
             <h1>Ordenes de: {{auth()->user()->name}}</h1>
             <ul class="list-group">
                 @forelse($orders as $order)
-                @if($order->enable == 1)
+                @if($order->status_id == 0)
                 @if($order->deliveryuser->id == auth()->user()->id)
                 <li class="list-group-item"><a href="{{ route('orders.details', $order) }}">{{ $order->client }}</a></li>
                 {{ $order->deliver_date}}<br>

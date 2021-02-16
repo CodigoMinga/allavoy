@@ -14,7 +14,18 @@
                 <li class="list-group-item">Valor declarado: ${{ $order->cost }}</li>
                 <li class="list-group-item">tipo de pago: {{ $order->paytype->name }}</li>
                 <li class="list-group-item">tipo de orden: {{ $order->ordertype->name }}</li>
-                <li class="list-group-item">Estado de orden: {{ $order->enable }}</li>
+                <li class="list-group-item">Estado de orden:
+                    @if($order->status_id == 0)
+                        <span class='badge badge-warning'> Pendiente</span>
+                    @elseif($order->status_id == 1)
+                        <span class='badge badge-success'> Entregado</span>
+
+                    @elseif($order->status_id == 2)
+                        <span class='badge badge-danger'> Cancelado</span>
+                    @else
+                        <span class='badge badge-secondary'>Desconocido</span>
+                    @endif
+                </li>
                 <li class="list-group-item">Repartidor Asignado : {{ $order->deliveryuser->name }} </li>
             </ul>
             <a class="btn btn-primary" href="{{ route('orders.change', $order)}}">Editar</a>
