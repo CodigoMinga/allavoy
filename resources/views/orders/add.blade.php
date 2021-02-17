@@ -2,18 +2,25 @@
 @section('content')
 <div class="container ">
     <div class="row">
-        <div class="col-12 text-center ">
+        <label class="col-12 text-center ">
 
             <H1>Crear orden</H1>
 
             <form method="POST" action="{{ route('orders.addProcess')}}">
                 @csrf
 
+
+
                 <label>
                     Entregar a: <br>
                     <input type="text" class="form-control" name="client" value="{{ old('client', '') }}">
                 </label>
                 <br>
+                <label>
+                    <label for="exampleFormControlTextarea1">Descripcion</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </label>
+                <br/>
                 <label>
                     Direccion <br>
                     <input type="text" class="form-control" name="address" value="{{ old('address', '') }}">

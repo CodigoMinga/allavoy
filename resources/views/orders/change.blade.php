@@ -14,6 +14,10 @@
                 </label>
                 <br>
                 <label>
+                    <label for="exampleFormControlTextarea1">Descripcion</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required>{{$order->description}}</textarea>
+                </label>
+                <label>
                     Direccion <br>
                     <input type="text" class="form-control" name="address" value="{{ $order->address }}">
                 </label>
