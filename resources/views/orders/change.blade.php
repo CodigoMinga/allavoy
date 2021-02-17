@@ -12,16 +12,23 @@
                     Entregar a: <br>
                     <input type="text" class="form-control" name="client" value="{{ $order->client }}">
                 </label>
-                <br>
+                <br/>
                 <label>
                     <label for="exampleFormControlTextarea1">Descripcion</label>
                     <textarea class="form-control" id="description" name="description" rows="3" required>{{$order->description}}</textarea>
                 </label>
+                <br/>
                 <label>
                     Direccion <br>
                     <input type="text" class="form-control" name="address" value="{{ $order->address }}">
                 </label>
                 <br>
+                <label>
+                    Telefono: <br>
+                    <input type="number" class="form-control" name="phone" value="{{ $order->phone}}">
+                </label>
+                <br/>
+
                 <label>
                     Fecha <br>
                     <input type="date" class="form-control" name="deliver_date" value="{{ date('Y-m-d', strtotime($order->deliver_date)) }}">

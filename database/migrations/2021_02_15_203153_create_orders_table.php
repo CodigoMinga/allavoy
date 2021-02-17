@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('client');
             $table->string('address');
+            $table->string('phone');
             $table->longText('description')->nullable();
             $table->integer('cost')->nullable();
 
