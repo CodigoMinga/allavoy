@@ -2,36 +2,48 @@
 @section('content')
 <div class="container ">
     <div class="row">
-        <div class="col-12 text-center ">
+        <label class="col-12 text-center ">
 
             <H1>Crear orden</H1>
 
             <form method="POST" action="{{ route('orders.addProcess')}}">
                 @csrf
 
+
+
                 <label>
                     Entregar a: <br>
-                    <input type="text" class="form-control" name="client" value="{{ old('client', '') }}">
+                    <input type="text" required class="form-control" name="client" value="{{ old('client', '') }}">
                 </label>
                 <br>
+                <label>
+                    <label for="exampleFormControlTextarea1">Descripcion</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </label>
+                <br/>
                 <label>
                     Direccion <br>
-                    <input type="text" class="form-control" name="address" value="{{ old('address', '') }}">
+                    <input type="text"  required class="form-control" name="address" value="{{ old('address', '') }}">
                 </label>
                 <br>
                 <label>
+                    Telefono (9 digitos): <br>
+                    <input type="tel"  pattern="[0-9]{9}" placeholder="973155545" required class="form-control" name="phone" value="{{ old('phone', '') }}">
+                </label>
+                <br/>
+                <label>
                     Fecha <br>
-                    <input type="date" class="form-control" name="deliver_date" value="{{ old('delver_date', '') }}">
+                    <input required type="date" class="form-control" name="deliver_date" value="{{ old('delver_date', '') }}">
                 </label>
                 <br>
                 <label>
                     Hora <br>
-                    <input type="time" class="form-control" name="deliver_hour" value="{{ old('delver_hour', '') }}">
+                    <input required type="time" class="form-control" name="deliver_hour" value="{{ old('delver_hour', '') }}">
                 </label>
                 <br>
                 <label>
                     Valor declarado <br>
-                    <input type="integer" class="form-control" name="cost" value="{{ old('cost', '') }}">
+                    <input required type="number" class="form-control" name="cost" value="{{ old('cost', '') }}">
                 </label>
                 <br>
                 <label for="paytype_id">Local:</label>
