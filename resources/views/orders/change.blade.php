@@ -33,34 +33,55 @@
                     <input type="integer" class="form-control" name="cost" value="{{ $order->cost }}">
                 </label>
                 <br>
-                <label>
-                    Tipo de pago <br>
-                    <input type="string" class="form-control" name="pay_type" value="{{ old('pay_type', '') }}">
-                </label>
+                <label for="paytype_id">Tipo Pago:</label>
+                <select name="paytype_id" id="paytype_id">
+                    @forelse($paytypes as $paytype)
+                        @if($paytype->id == $order->paytype_id)
+                            <option selected value="{{ $paytype->id }}">{{ $paytype->name }}</option>
+                        @else
+                            <option value="{{ $paytype->id }}">{{ $paytype->name }}</option>
+                        @endif
+
+                    @empty
+                        <li>No Hay Metodos de pago</li>
+                    @endforelse
+                </select>
                 <br>
                 <label for="friendshop_id">Local:</label>
                 <select name="friendshop_id" id="friendshop_id">
                     @forelse($friendshops as $friendshop)
-                    <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
+                        @if($friendshop->id == $order->friendshop_id)
+                            <option selected value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
+                        @else
+                            <option value="{{ $friendshop->id }}">{{ $friendshop->name }}</option>
+                        @endif
+
                     @empty
                     <li>Aun no hay locales amigos</li>
                     @endforelse
                 </select>
                 <br>
                 <label for="order_type">Tipo de orden:</label>
-                <select name="order_type" id="order">
+                <select name="ordertype_id" id="ordertype_id">
+                    @forelse($ordertypes as $ordertype)
+                        @if($ordertype->id == $order->ordertype_id)
+                            <option selected value="{{ $ordertype->id }}">{{ $ordertype->name }}</option>
+                        @else
+                            <option value="{{ $ordertype->id }}">{{ $ordertype->name }}</option>
+                        @endif
 
-                    <option value="0" {{$order->order_type == 0 ? 'selected' : '' }}>Compra</option>
-                    <option value="1" {{$order->order_type == 1 ? 'selected' : '' }}>Encargo</option>
+                    @empty
+                        <li>Aun no hay locales amigos</li>
+                    @endforelse
                 </select>
                 <br>
 
                 <label for="enable">Estado de orden:</label>
                 <select name="enable" id="order">
 
-                    <option value="1" {{$order->enable == 1 ? 'selected' : ''}}>Pendiente</option>
-                    <option value="0" {{$order->enable == 0 ? 'selected' : ''}}>Entregada</option>
-                    <option value="2" {{$order->enable == 2 ? 'selected' : ''}}>Canselado</option>
+                    <option value="1" {{$order->status_id == 0 ? 'selected' : ''}}>Pendiente</option>
+                    <option value="0" {{$order->status_id == 1 ? 'selected' : ''}}>Entregada</option>
+                    <option value="2" {{$order->status_id == 2 ? 'selected' : ''}}>Canselado</option>
                 </select>
                 <br>
 

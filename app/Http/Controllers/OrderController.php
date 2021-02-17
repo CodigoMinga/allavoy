@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Ordertype;
+use App\Paytypes;
 use App\User;
 use App\Friendshop;
+use Illuminate\Support\Facades\DB;
+use Auth;
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class OrderController extends Controller
 {
@@ -20,10 +25,10 @@ class OrderController extends Controller
      {
          $this->middleware('auth')->only('add','list', 'details');
      }
-     
+
     public function index()
     {
-        
+
     }
 
     /**
@@ -96,7 +101,10 @@ class OrderController extends Controller
     {
         $friendshops = Friendshop::all();
         $users = User::all();
-        return view('orders.add', compact('users', 'friendshops'));
+        $paytypes = Paytypes::all();
+        $ordertypes = Ordertype::all();
+
+        return view('orders.add', compact('users', 'friendshops','ordertypes','paytypes'));
     }
     public function addProcess(Request $request)
     {
@@ -125,8 +133,12 @@ class OrderController extends Controller
     public function jobs()
     {
         $users = User::all();
+
+        $orders = Order::where('deliveryuser_id','=',Auth::user()->id)
+            ->where('status_id','=',0)
+            ->get();
         return view('orders.jobs', [
-            'orders' => Order::all()
+            'orders' => $orders
         ]);
     }
 
@@ -134,10 +146,14 @@ class OrderController extends Controller
     {
         $friendshops = Friendshop::all();
         $users = User::all();
+        $paytypes = Paytypes::all();
+        $ordertypes = Ordertype::all();
         return view('orders.change',[
             'order' => $order,
             'users' => $users,
-            'friendshops' => $friendshops
+            'friendshops' => $friendshops,
+            'paytypes' => $paytypes,
+            'ordertypes' => $ordertypes
         ]);
     }
 
@@ -154,9 +170,23 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($order_id);
 
-        $order->enable = 0;
+        $order->status_id = 1;
         $order->save();
 
         return redirect()->route('orders.jobs');
+    }
+
+
+    public function getData(){
+        $orders = Db::select('
+        select orders.*,
+        ordertypes.name as ordertype_name,
+        paytypes.name as paytype_name
+        from orders
+        left join ordertypes on orders.ordertype_id = ordertypes.id
+        left join paytypes on orders.paytype_id = paytypes.id
+        ');
+        return DataTables::of($orders)->make(true);
+
     }
 }

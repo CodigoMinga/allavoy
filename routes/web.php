@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('index');
+
+
 Route::get('/app/order/add','OrderController@add')->name('orders.add');
 Route::post('/app/order/add/process','OrderController@addProcess')->name('orders.addProcess');
 Route::get('/app/order/edit/{order}', 'OrderController@change')->name('orders.change');
@@ -22,5 +24,7 @@ Route::post('/app/register/process','UserController@store')->name('users.store')
 Route::get('/app/user/list','UserController@list')->name('users.list');
 
 Route::get('/logout','HomeController@logout')->name('logout');
+
+Route::get('/ajax/orders/getdata','OrderController@getData');
 Auth::routes(['register' => false]);
 
