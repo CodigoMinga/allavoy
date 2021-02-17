@@ -5,9 +5,11 @@
 <table id="example" class="table table-striped table-bordered" style="width:100%">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Fecha</th>
+        <th>Folio</th>
+        <th>Entrega</th>
         <th>Cliente</th>
+        <th>Local</th>
+        <th>Valor</th>
         <th>Estatus</th>
         <th>Opciones</th>
     </tr>
@@ -18,10 +20,11 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/af-2.3.5/b-1.6.5/b-colvis-1.6.5/b-flash-1.6.5/b-html5-1.6.5/b-print-1.6.5/cr-1.5.3/fc-3.3.2/fh-3.1.8/kt-2.6.0/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function(){
         $('#example').DataTable({
             responsive: true,
@@ -55,8 +58,27 @@
             "ajax" : "{{ url('/') }}/ajax/orders/getdata",
             "columns" : [
                 {"data" : "id"},
-                {"data" : "id"},
+                //Vencimiento
+                {
+                    "data": "deliver_date",
+                    "render": function ( data, type, full, meta ) {
+                        var returnString = '';
+
+                        if(full.deliver_date){
+
+                            var a = moment(full.deliver_date);
+
+                            returnString += "" + a.format('DD/MM/YYYY') + " " + full.deliver_hour;
+                        }else{
+                            returnString="";
+                        }
+
+                        return returnString;
+                    }
+                },
                 {"data" : "client"},
+                {"data" : "friendshop_name"},
+                {"data" : "cost"},
                 //Estado
                 {
                     "data" :  "client",
