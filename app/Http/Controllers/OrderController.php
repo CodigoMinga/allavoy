@@ -181,10 +181,12 @@ class OrderController extends Controller
         $orders = Db::select('
         select orders.*,
         ordertypes.name as ordertype_name,
-        paytypes.name as paytype_name
+        paytypes.name as paytype_name,
+        friendshops.name as friendshop_name
         from orders
         left join ordertypes on orders.ordertype_id = ordertypes.id
         left join paytypes on orders.paytype_id = paytypes.id
+        left join friendshops on orders.friendshop_id = friendshops.id
         ');
         return DataTables::of($orders)->make(true);
 
